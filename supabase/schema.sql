@@ -6,14 +6,15 @@
 -- 1. 주문 테이블 ------------------------------------------------
 create table if not exists public.orders (
   id          bigint generated always as identity primary key, -- 주문번호 (#1, #2, ...)
-  name        text        not null check (char_length(trim(name)) > 0),   -- 이름
+  customer_name text      not null check (char_length(trim(customer_name)) > 0), -- 이름
   phone       text        not null check (char_length(trim(phone)) > 0),  -- 전화번호
   drink       text        not null,                                       -- 음료 이름
+  drink_price integer     not null check (drink_price >= 0),              -- 음료 기본 가격(원)
   size        text        not null default 'M' check (size in ('S', 'M', 'L')),
   options     text[]      not null default '{}',                          -- 추가 옵션 (예: {샷 추가,크림 추가})
   quantity    integer     not null default 1 check (quantity between 1 and 100),
   request     text        not null default '',                            -- 요청사항
-  price       integer     not null check (price >= 0),                    -- 총 금액(원)
+  total_price integer     not null check (total_price >= 0),              -- 총 금액(원)
   created_at  timestamptz not null default now()                          -- 주문 시간
 );
 
@@ -46,7 +47,7 @@ create policy "anon can delete orders"
 
 -- ============================================================
 -- 사용 예시 (JavaScript, supabase-js)
---   저장:  await supabase.from('orders').insert({ name, phone, drink, size, options, quantity, request, price })
+--   저장:  await supabase.from('orders').insert({ customer_name, phone, drink, drink_price, size, options, quantity, request, total_price })
 --   조회:  await supabase.from('orders').select('*').order('created_at', { ascending: false })
 --   취소:  await supabase.from('orders').delete().eq('id', 3)
 --   전체:  await supabase.from('orders').delete().gte('id', 0)

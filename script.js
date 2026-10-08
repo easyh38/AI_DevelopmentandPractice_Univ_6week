@@ -9,8 +9,8 @@
 //    - SUPABASE_URL : Project URL (예: https://xxxx.supabase.co)
 //    - SUPABASE_KEY : anon public 키 (service_role 키는 절대 넣지 마세요!)
 // ------------------------------------------------------------
-const SUPABASE_URL = "";  // TODO: 여기에 Project URL을 넣으세요
-const SUPABASE_KEY = "";  // TODO: 여기에 anon public 키를 넣으세요
+const SUPABASE_URL = "https://stptdjfwbqggfdzuzfjt.supabase.co";  // TODO: 여기에 Project URL을 넣으세요
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN0cHRkamZ3YnFnZ2ZkenV6Zmp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0MTQ3NTQsImV4cCI6MjEwNjk5MDc1NH0.eZASgLIGt7Z1T9n_uv4e4pgnfgwPDqyDJwM2EO0aBO4";  // TODO: 여기에 anon public 키를 넣으세요
 
 // index.html 에서 CDN 으로 불러온 supabase-js 가 전역 변수 supabase 를 만들어 줍니다.
 // createClient 로 Supabase 와 통신할 "클라이언트"를 만듭니다.

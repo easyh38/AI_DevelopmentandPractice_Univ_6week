@@ -2,11 +2,12 @@
 -- 테스트용 주문 1건 입력 (schema.sql 실행 후 사용)
 -- ============================================================
 
-insert into public.orders (name, phone, drink, size, options, quantity, request, price)
+insert into public.orders (customer_name, phone, drink, drink_price, size, options, quantity, request, total_price)
 values (
   '홍길동',
   '010-1234-5678',
   '카페라떼',
+  4000,                      -- 음료 기본 가격
   'M',
   array['샷 추가'],          -- 옵션이 없으면 '{}' 또는 array[]::text[]
   1,
@@ -18,4 +19,4 @@ values (
 select * from public.orders order by created_at desc;
 
 -- 테스트 데이터 삭제가 필요할 때
--- delete from public.orders where name = '홍길동' and phone = '010-1234-5678';
+-- delete from public.orders where customer_name = '홍길동' and phone = '010-1234-5678';
