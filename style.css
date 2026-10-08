@@ -1,0 +1,400 @@
+/* ===== 기본 설정 ===== */
+:root {
+  --bg: #faf6f0;          /* 베이지 배경 */
+  --brown: #6b4226;       /* 메인 갈색 */
+  --brown-light: #8a5a38; /* hover용 밝은 갈색 */
+  --brown-soft: rgba(107, 66, 38, 0.18); /* 포커스 그림자용 연한 갈색 */
+  --border: #e3d6c6;
+  --card: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px 16px 48px;
+  background: var(--bg);
+  color: var(--brown);
+  font-family: '맑은 고딕', 'Malgun Gothic', sans-serif;
+  line-height: 1.5;
+}
+
+/* 최대 너비 520px, 가운데 정렬 */
+.cafe-header,
+main {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ===== 상단 카페 소개 ===== */
+.cafe-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.cafe-logo {
+  display: inline-block;
+  font-size: 72px;
+  line-height: 1;
+  transform-origin: 50% 90%;
+  animation: sway 3s ease-in-out infinite; /* 천천히 흔들림 */
+}
+
+/* 로고 흔들림 애니메이션 */
+@keyframes sway {
+  0%, 100% { transform: rotate(-6deg); }
+  50%      { transform: rotate(6deg); }
+}
+
+.cafe-name {
+  margin: 8px 0 4px;
+  font-size: 32px;
+  color: var(--brown);
+}
+
+.cafe-subtitle {
+  margin: 0;
+  font-size: 15px;
+  opacity: 0.8;
+}
+
+/* ===== 주문서 카드 ===== */
+#order-form {
+  background: var(--card);
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(107, 66, 38, 0.12);
+}
+
+.form-group {
+  margin: 0 0 18px;
+}
+
+label,
+legend {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.required {
+  color: #c0392b;
+}
+
+/* ===== 입력칸 ===== */
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  color: #3b2a1e;
+  font-family: inherit;
+  font-size: 15px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* 포커스 시 갈색 테두리 + 연한 갈색 그림자 */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--brown);
+  box-shadow: 0 0 0 3px var(--brown-soft);
+}
+
+/* ===== 라디오 / 체크박스 (가로 배치) ===== */
+fieldset.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  min-width: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  border: none;
+}
+
+fieldset legend {
+  width: 100%;
+  padding: 0;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.option-item label {
+  margin: 0;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.option-item input {
+  accent-color: var(--brown);
+  cursor: pointer;
+}
+
+/* ===== 예상 금액 ===== */
+.total-price {
+  margin: 24px 0 16px;
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--brown);
+  text-align: center;
+}
+
+/* ===== 버튼 ===== */
+.button-group {
+  display: flex;
+  gap: 12px;
+}
+
+.button-group button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+/* 주문하기: 갈색 배경 + 흰 글씨 */
+#order-btn {
+  border: 2px solid var(--brown);
+  background: var(--brown);
+  color: #fff;
+}
+
+/* hover 시 약간 밝게 + 살짝 떠오르는 효과 */
+#order-btn:hover {
+  background: var(--brown-light);
+  border-color: var(--brown-light);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(107, 66, 38, 0.3);
+}
+
+#order-btn:active {
+  transform: translateY(0);
+}
+
+/* 다시 작성: 흰 배경 + 갈색 테두리 */
+#reset-btn {
+  border: 2px solid var(--brown);
+  background: #fff;
+  color: var(--brown);
+}
+
+#reset-btn:hover {
+  background: var(--bg);
+}
+
+button:focus-visible {
+  outline: 3px solid var(--brown-soft);
+  outline-offset: 2px;
+}
+
+/* ===== 주문 확인 메시지 ===== */
+.order-result {
+  margin-top: 20px;
+  padding: 16px;
+  background: #e6f6e6;
+  color: #2e7d32;
+  border-radius: 12px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* hidden 속성 또는 hidden 클래스가 붙으면 숨기기 */
+[hidden],
+.hidden {
+  display: none !important;
+}
+
+/* ===== 모바일 대응 ===== */
+@media (max-width: 480px) {
+  body {
+    padding: 16px 12px 32px;
+  }
+
+  #order-form {
+    padding: 18px;
+  }
+
+  .cafe-logo {
+    font-size: 56px;
+  }
+
+  .cafe-name {
+    font-size: 26px;
+  }
+
+  .total-price {
+    font-size: 22px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+}
+
+/* 움직임 줄이기 설정을 쓰는 사용자는 애니메이션 끄기 */
+@media (prefers-reduced-motion: reduce) {
+  .cafe-logo {
+    animation: none;
+  }
+
+  #order-btn:hover {
+    transform: none;
+  }
+}
+
+/* ===== 탭 메뉴 ===== */
+.tabs {
+  display: flex;
+  max-width: 520px;
+  margin: 0 auto 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px 8px;
+  border: none;
+  border-bottom: 3px solid transparent;
+  background: none;
+  color: rgba(107, 66, 38, 0.5); /* 선택 안 된 탭: 연한 갈색 */
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab-btn:hover {
+  color: var(--brown-light);
+}
+
+/* 선택된 탭: 갈색 글씨 + 갈색 밑줄 */
+.tab-btn.active {
+  color: var(--brown);
+  border-bottom-color: var(--brown);
+}
+
+/* 주문 건수 둥근 갈색 배지 */
+.badge {
+  display: inline-block;
+  min-width: 22px;
+  margin-left: 4px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--brown);
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ===== 주문 내역 ===== */
+.orders-empty {
+  padding: 40px 0;
+  text-align: center;
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* 주문 1건 카드: 베이지 배경 + 왼쪽 갈색 세로줄 */
+.order-card {
+  position: relative;
+  padding: 14px 76px 14px 16px; /* 오른쪽은 취소 버튼 자리 */
+  background: var(--bg);
+  border-left: 5px solid var(--brown);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(107, 66, 38, 0.1);
+}
+
+.order-line1 {
+  font-weight: bold;
+  font-size: 16px;
+  word-break: break-all;
+}
+
+.order-line2 {
+  margin-top: 4px;
+  font-size: 15px;
+}
+
+.order-line3 {
+  margin-top: 4px;
+  font-size: 13px;
+  opacity: 0.7;
+  word-break: break-all;
+}
+
+/* 카드 오른쪽 위 취소 버튼 */
+.cancel-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 10px;
+  border: 1px solid var(--brown);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--brown);
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background: var(--bg);
+}
+
+.orders-footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.orders-summary {
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.clear-btn {
+  padding: 10px 18px;
+  border: 2px solid var(--brown);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--brown);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.clear-btn:hover {
+  background: var(--bg);
+}

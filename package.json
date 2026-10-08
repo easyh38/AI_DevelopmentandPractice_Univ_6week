@@ -1,0 +1,16 @@
+{
+  "name": "vibe-cafe",
+  "version": "1.0.0",
+  "description": "룰루랄라 바이브 카페 주문서",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "serve -l 3000 .",
+    "dev": "serve -l 3000 ."
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "devDependencies": {
+    "serve": "^14.2.6"
+  }
+}
